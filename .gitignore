@@ -1,0 +1,10 @@
+node_modules/
+coverage/
+dist/
+
+*.log
+docs/
+.DS_Store
+
+# default output of cli
+my-gits-*

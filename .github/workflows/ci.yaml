@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  testCodebase:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js 16.14.2
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.14.2
+
+      - run: npm ci
+
+      - run: npm run lint
+
+      - run: npm run typecheck
+
+  testCli:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js 16.14.2
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.14.2
+
+      - run: npm ci
+      - run: npm run dev -- -- --ci
+
+      # This is what the user would do, minus actually starting the application
+      - run: cd my-sidebase-app && npx prisma generate
+
+      # start app and curl from it
+      - run: "cd my-sidebase-app && timeout 30 npm run dev & (sleep 10 && curl --fail localhost:3000)"
+
+      # build app, start it in prod mode and curl from it
+      - run: "cd my-sidebase-app && npm run build && timeout 30 npm run preview & (sleep 10 && curl --fail localhost:3000)"
+
+  publish:
+    needs: [testCli, testCodebase]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js 16.14.2
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.14.2
+
+      - run: npm ci
+
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          access: public
