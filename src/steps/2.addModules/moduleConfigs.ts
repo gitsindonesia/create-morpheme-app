@@ -296,6 +296,27 @@ const counter = useCounterStore()
 </template>
 `
 
+const eslintConfig = `{
+  "extends": "@antfu",
+  "rules": {
+    "vue/valid-v-slot": "off",
+    "vue/v-on-event-hyphenation": "off",
+    "import/first": "off",
+    "vue/max-attributes-per-line": ["error", {
+      "singleline": {
+        "max": 4
+      },
+      "multiline": {
+        "max": 1
+      }
+    }],
+    "vue/first-attribute-linebreak": ["error", {
+      "singleline": "ignore",
+      "multiline": "below"
+    }]
+  }
+}`
+
 export declare interface File {
   path: string;
   content: string;
@@ -312,7 +333,7 @@ declare interface ModuleConfig {
 }
 
 // TODO: Improve files approach: It will fail as soon as the content of a file depends on two dependencies at the same time!
-export type Modules = "prisma" | "auth" | "trpc" | "pinia"
+export type Modules = "prisma" | "auth" | "trpc" | "pinia" | "eslint"
 export const moduleConfigs: Record<Modules, ModuleConfig> = {
   "prisma": {
     humanReadableName: "Prisma ORM",
@@ -465,6 +486,24 @@ export const moduleConfigs: Record<Modules, ModuleConfig> = {
     ],
     tasksPostInstall: [],
     htmlForIndexVue: "<p>Checkout the Pinia demo page here: <nuxt-link to=\"/pinia\" class=\"underline text-blue-600\">Click me to test the pinia setup!</nuxt-link></p>"
+  },
+  "eslint": {
+    humanReadableName: "ESLint",
+    description: "Lint your code with ESLint. See more: https://eslint.org/",
+    dependencies: [{
+      name: "@antfu/eslint-config",
+      version: "^0.34.0",
+      isDev: true
+    },],
+    nuxtConfig: {
+    },
+    files: [
+      {
+        path: ".eslintrc",
+        content: eslintConfig
+      },
+    ],
+    tasksPostInstall: [],
   },
   // no need to tailwind since its already installed on minimal starter
   // "tailwind": {
