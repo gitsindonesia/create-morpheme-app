@@ -30,17 +30,15 @@ const main = async () => {
   let preferences
   if (!ci) {
     preferences = await getUserPreferences()
-    // disable counting in CI
     count(preferences)
   } else {
     preferences = {
       setProjectName: "my-gits-app",
       setStack: "alacarte",
-      addModules: ["prisma", "auth", "trpc", "tailwind", "gits-ui"],
+      addModules: ["prisma", "auth", "trpc", "pinia", "eslint", "commitlint"],
       runGitInit: true,
       addCi: "github",
       runInstall: true,
-      commitlint: true,
     }
   }
 
