@@ -218,57 +218,6 @@ const hello = await $client.hello.useQuery({ text: 'client' })
 </template>
 `
 
-const tailwindConfig = `const colors = require('tailwindcss/colors');
-
-// default GITS Color
-const primary = {
-  DEFAULT: '#28A0F6',
-  50: '#D8EEFD',
-  100: '#C5E5FD',
-  200: '#9DD4FB',
-  300: '#76C3F9',
-  400: '#4FB1F8',
-  500: '#28A0F6',
-  600: '#0984DD',
-  700: '#0764A7',
-  800: '#054471',
-  900: '#02233B',
-};
-
-// default GITS Color
-const secondary = {
-  DEFAULT: '#FF8B49',
-  50: '#FFFFFF',
-  100: '#FFF3EC',
-  200: '#FFD9C3',
-  300: '#FFBF9B',
-  400: '#FFA572',
-  500: '#FF8B49',
-  600: '#FF6711',
-  700: '#D84E00',
-  800: '#A03A00',
-  900: '#682600',
-};
-
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ['./node_modules/@gits-id/**/src/**/*.{vue,js,ts,jsx,tsx,css}'],
-  theme: {
-    extend: {
-      colors: {
-        primary,
-        secondary,
-        info: colors.sky,
-        success: colors.emerald,
-        warning: colors.yellow,
-        error: colors.rose,
-      },
-    },
-  },
-  presets: [require('@gits-id/tailwind-config/preset')],
-};
-`
-
 const piniaCounterStore = `import { defineStore } from 'pinia'
 
 export const useCounterStore = defineStore('counter', {
@@ -317,6 +266,8 @@ const eslintConfig = `{
   }
 }`
 
+const commitlintConfig = "module.exports = {extends: ['@commitlint/config-conventional']}"
+
 export declare interface File {
   path: string;
   content: string;
@@ -333,7 +284,7 @@ declare interface ModuleConfig {
 }
 
 // TODO: Improve files approach: It will fail as soon as the content of a file depends on two dependencies at the same time!
-export type Modules = "prisma" | "auth" | "trpc" | "pinia" | "eslint"
+export type Modules = "prisma" | "auth" | "trpc" | "pinia" | "eslint" | "commitlint"
 export const moduleConfigs: Record<Modules, ModuleConfig> = {
   "prisma": {
     humanReadableName: "Prisma ORM",
@@ -501,6 +452,36 @@ export const moduleConfigs: Record<Modules, ModuleConfig> = {
       {
         path: ".eslintrc",
         content: eslintConfig
+      },
+    ],
+    tasksPostInstall: [],
+  },
+  "commitlint": {
+    humanReadableName: "Commitlint",
+    description: "Lint your commit messages with Commitlint. See more: https://commitlint.js.org/#/",
+    dependencies: [
+      {
+        name: "@commitlint/config-conventional",
+        version: "^17.4.0",
+        isDev: true
+      },
+      {
+        name: "@commitlint/cli",
+        version: "^17.4.0",
+        isDev: true
+      },
+      {
+        name: "husky",
+        version: "^8.0.3",
+        isDev: true
+      }
+    ],
+    nuxtConfig: {
+    },
+    files: [
+      {
+        path: "commitlint.config.js",
+        content: commitlintConfig
       },
     ],
     tasksPostInstall: [],

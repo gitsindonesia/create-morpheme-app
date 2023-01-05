@@ -7,6 +7,7 @@ import path from "node:path"
 import { NuxtConfig } from "@nuxt/schema"
 import defu from "defu"
 import { inspect } from "node:util"
+import runCommitlinkHooks from "./commitlintHooks"
 
 export default async (preferences: Preferences, templateDir: string) => {
   const selectedModules: Modules[] = preferences.addModules || []
@@ -73,10 +74,15 @@ useHead({
   const moduleIndexHtmlSnippets = selectedModules.map((module) => moduleConfigs[module].htmlForIndexVue).filter(html => typeof html !== "undefined")
   const nuxtPagesIndexVue = `<template>
   <div class="container mx-auto p-6">
-    <h1${selectedModules.includes("tailwind") ? " class=\"text-4xl\"" : ""}>Welcome to your gits app!</h1>${moduleIndexHtmlSnippets.length > 0 ? "\n" + moduleIndexHtmlSnippets.join("\n    ") : ""}
+    <h1 class="text-2xl font-semibold">Welcome to your gits app!</h1>${moduleIndexHtmlSnippets.length > 0 ? "\n" + moduleIndexHtmlSnippets.join("\n    ") : ""}
   </div>
 </template>
 `
   await mkdir(resolver("pages"), { recursive: true })
   await writeFile(resolver("pages/index.vue"), nuxtPagesIndexVue)
+
+  // 7. Check commitlint
+  if (selectedModules.includes("commitlint")) {
+    runCommitlinkHooks(templateDir)
+  }
 }
