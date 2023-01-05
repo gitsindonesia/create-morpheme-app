@@ -6,33 +6,32 @@ import {
   addCi,
   npmInstall,
   addReadme,
-  setupCommitlint,
-} from "./steps";
+} from "./steps"
 import {
   sayGoodbye,
   sayQuickWelcome,
   saySetupIsRunning,
   sayWelcome,
-} from "./messages";
-import { getUserPreferences } from "./prompts";
-import { wrapInSpinner } from "./utils/spinner";
-import { getUserPkgManager } from "./utils/getUserPkgManager";
-import { cliOptions } from "./utils/parseCliOptions";
-import { count } from "./utils/count";
+} from "./messages"
+import { getUserPreferences } from "./prompts"
+import { wrapInSpinner } from "./utils/spinner"
+import { getUserPkgManager } from "./utils/getUserPkgManager"
+import { cliOptions } from "./utils/parseCliOptions"
+import { count } from "./utils/count"
 
 const main = async () => {
-  const { quick, ci } = cliOptions;
+  const { quick, ci } = cliOptions
   if (!quick) {
-    await sayWelcome();
+    await sayWelcome()
   } else {
-    sayQuickWelcome();
+    sayQuickWelcome()
   }
 
-  let preferences;
+  let preferences
   if (!ci) {
-    preferences = await getUserPreferences();
+    preferences = await getUserPreferences()
     // disable counting in CI
-    count(preferences);
+    count(preferences)
   } else {
     preferences = {
       setProjectName: "my-gits-app",
@@ -42,11 +41,11 @@ const main = async () => {
       addCi: "github",
       runInstall: true,
       commitlint: true,
-    };
+    }
   }
 
   if (!quick) {
-    saySetupIsRunning(preferences);
+    saySetupIsRunning(preferences)
   }
 
   // 1. Download the Nuxt 3 template
@@ -54,7 +53,7 @@ const main = async () => {
     `Adding Nuxt 3 ${preferences.setStack}-template`,
     downloadTemplate,
     preferences
-  );
+  )
 
   // 2. Add modules
   if (preferences.setStack === "alacarte") {
@@ -63,17 +62,17 @@ const main = async () => {
       addModules,
       preferences,
       template.dir
-    );
+    )
   }
 
   // 3. Initialize git
   if (preferences.runGitInit) {
-    await wrapInSpinner("Running `git init`", initGit, template.dir);
+    await wrapInSpinner("Running `git init`", initGit, template.dir)
   }
 
   // 4. Add CI
   if (preferences.addCi === "github") {
-    await wrapInSpinner("Adding CI template", addCi, preferences, template.dir);
+    await wrapInSpinner("Adding CI template", addCi, preferences, template.dir)
   }
 
   // 5. Run install
@@ -82,24 +81,24 @@ const main = async () => {
       `Running \`${getUserPkgManager()} install\``,
       npmInstall,
       template.dir
-    );
+    )
   }
 
   // 6. Write readme
-  await wrapInSpinner("Adding README", addReadme, preferences, template.dir);
+  await wrapInSpinner("Adding README", addReadme, preferences, template.dir)
 
-  sayGoodbye(preferences);
-};
+  sayGoodbye(preferences)
+}
 
 main().catch((err) => {
-  console.error("Aborting installation...");
+  console.error("Aborting installation...")
   if (err instanceof Error) {
-    console.error(err);
+    console.error(err)
   } else {
     console.error(
       "An unknown error has occurred. Please open an issue on github with the below:"
-    );
-    console.log(err);
+    )
+    console.log(err)
   }
-  process.exit(1);
-});
+  process.exit(1)
+})
