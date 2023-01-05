@@ -218,6 +218,57 @@ const hello = await $client.hello.useQuery({ text: 'client' })
 </template>
 `
 
+const tailwindConfig = `const colors = require('tailwindcss/colors');
+
+// default GITS Color
+const primary = {
+  DEFAULT: '#28A0F6',
+  50: '#D8EEFD',
+  100: '#C5E5FD',
+  200: '#9DD4FB',
+  300: '#76C3F9',
+  400: '#4FB1F8',
+  500: '#28A0F6',
+  600: '#0984DD',
+  700: '#0764A7',
+  800: '#054471',
+  900: '#02233B',
+};
+
+// default GITS Color
+const secondary = {
+  DEFAULT: '#FF8B49',
+  50: '#FFFFFF',
+  100: '#FFF3EC',
+  200: '#FFD9C3',
+  300: '#FFBF9B',
+  400: '#FFA572',
+  500: '#FF8B49',
+  600: '#FF6711',
+  700: '#D84E00',
+  800: '#A03A00',
+  900: '#682600',
+};
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['./node_modules/@gits-id/**/src/**/*.{vue,js,ts,jsx,tsx,css}'],
+  theme: {
+    extend: {
+      colors: {
+        primary,
+        secondary,
+        info: colors.sky,
+        success: colors.emerald,
+        warning: colors.yellow,
+        error: colors.rose,
+      },
+    },
+  },
+  presets: [require('@gits-id/tailwind-config/preset')],
+};
+`
+
 export declare interface File {
   path: string;
   content: string;
@@ -234,7 +285,7 @@ declare interface ModuleConfig {
 }
 
 // TODO: Improve files approach: It will fail as soon as the content of a file depends on two dependencies at the same time!
-export type Modules = "prisma" | "auth" | "trpc" | "tailwind" | "naiveui"
+export type Modules = "prisma" | "auth" | "trpc"
 export const moduleConfigs: Record<Modules, ModuleConfig> = {
   "prisma": {
     humanReadableName: "Prisma ORM",
@@ -355,32 +406,54 @@ export const moduleConfigs: Record<Modules, ModuleConfig> = {
     tasksPostInstall: [],
     htmlForIndexVue: "<p>Checkout the tRPC demo page here: <nuxt-link to=\"/trpc\" class=\"underline text-blue\">Click me to test the tRPC setup!</nuxt-link></p>"
   },
-  "tailwind": {
-    humanReadableName: "Tailwind CSS",
-    description: "A utility-first CSS framework packed with classes that can be composed to build any design, directly in your markup. See more: https://tailwindcss.com/",
-    dependencies: [{
-      name: "@nuxtjs/tailwindcss",
-      version: "^6.1.3",
-      isDev: true
-    }],
-    nuxtConfig: {
-      modules: ["@nuxtjs/tailwindcss"]
-    },
-    files: [],
-    tasksPostInstall: []
-  },
-  "naiveui": {
-    humanReadableName: "Naive UI",
-    description: "A Vue 3 Component Library. Fairly Complete, Theme Customizable, Uses TypeScript, Fast. Kinda Interesting. See more: https://www.naiveui.com/",
-    dependencies: [{
-      name: "@huntersofbook/naive-ui-nuxt",
-      version: "^0.5.1",
-      isDev: true
-    }],
-    nuxtConfig: {
-      modules: ["@huntersofbook/naive-ui-nuxt"],
-    },
-    files: [],
-    tasksPostInstall: []
-  }
+  // no need to tailwind since its already installed on minimal starter
+  // "tailwind": {
+  //   humanReadableName: "Tailwind CSS",
+  //   description: "A utility-first CSS framework packed with classes that can be composed to build any design, directly in your markup. See more: https://tailwindcss.com/",
+  //   dependencies: [{
+  //     name: "@nuxtjs/tailwindcss",
+  //     version: "^6.1.3",
+  //     isDev: true
+  //   }],
+  //   nuxtConfig: {
+  //     modules: ["@nuxtjs/tailwindcss"]
+  //   },
+  //   files: [],
+  //   tasksPostInstall: []
+  // },
+  // no need to naiveui since its already had GITS UI on minimal starter
+  // "gits-ui": {
+  //   humanReadableName: "GITS UI",
+  //   description: "GITS UI Component",
+  //   dependencies: [{
+  //     name: "@gits-id/ui-nuxt",
+  //     version: "^0.14.0-alpha.4",
+  //     isDev: false
+  //   }],
+  //   nuxtConfig: {
+  //     modules: ["@gits-id/ui-nuxt"],
+  //   },
+  //   files: [
+  //     {
+  //       path: "tailwind.config.js",
+  //       content: tailwindConfig
+  //     },
+  //   ],
+  //   tasksPostInstall: []
+  // }
+  // no need to naiveui since its already had GITS UI on minimal starter
+  // "naiveui": {
+  //   humanReadableName: "Naive UI",
+  //   description: "A Vue 3 Component Library. Fairly Complete, Theme Customizable, Uses TypeScript, Fast. Kinda Interesting. See more: https://www.naiveui.com/",
+  //   dependencies: [{
+  //     name: "@huntersofbook/naive-ui-nuxt",
+  //     version: "^0.5.1",
+  //     isDev: true
+  //   }],
+  //   nuxtConfig: {
+  //     modules: ["@huntersofbook/naive-ui-nuxt"],
+  //   },
+  //   files: [],
+  //   tasksPostInstall: []
+  // }
 }

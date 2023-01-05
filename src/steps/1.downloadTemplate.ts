@@ -5,11 +5,13 @@ import { getUserPkgManager } from "../utils/getUserPkgManager"
 import { writeFile } from "node:fs/promises"
 import { say } from "../messages"
 
+const MINIMAL_TEMPLATE = "github:gitsindonesia/ui-component/starter/nuxt-minimal"
+
 const KNOWN_TEMPLATES = {
-  "minimal": "github:gitsindonesia/ui-component/starter/nuxt-minimal",
+  "minimal": MINIMAL_TEMPLATE,
   "full": "github:gitsindonesia/nuxt-starter",
-  "merino": "github:sidebase/merino#v3",
-  "cheviot": "community/sidebase"
+  "alacarte": MINIMAL_TEMPLATE,
+  // "cheviot": "community/sidebase"
 }
 
 // nuxt 3 + pnpm needs to shamefully hoist + we want to auto-install required peer dependencies (last one taken from: https://github.com/antfu/vitesse/blob/main/.npmrc)

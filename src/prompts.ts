@@ -3,7 +3,7 @@ import { say } from "./messages"
 import { moduleConfigs } from "./steps/2.addModules/moduleConfigs"
 import { getUserPkgManager } from "./utils/getUserPkgManager"
 
-const skipIfCheviotWasChosen = (typeIfNotMerino: PromptType) => (_: unknown, preferences: Record<string, string>) => ["cheviot", "minimal", "full"].includes(preferences.setStack) ? null : typeIfNotMerino
+const skipIfCheviotWasChosen = (typeIfNotMerino: PromptType) => (_: unknown, preferences: Record<string, string>) => ["minimal", "full"].includes(preferences.setStack) ? null : typeIfNotMerino
 
 const PROJECT_NAME_NOUNS = ["app", "project", "endeavour", "undertaking", "enterprise", "venture", "experiment", "effort", "operation", "affair", "pursuit", "struggle", "adventure", "thing", "opportunity"]
 const getRandomProjectNoun = () => PROJECT_NAME_NOUNS[Math.floor((Math.random() * PROJECT_NAME_NOUNS.length))]
@@ -22,8 +22,8 @@ const PROMPT_QUESTIONS: PromptObject[] = [
     choices: [
       { title: "Minimal", description: "A minimal Nuxt + GITS UI starter template", value: "minimal" },
       { title: "Full", description: "A full Nuxt + GITS UI starter template", value: "full" },
-      { title: "Merino", description: "A modular stack that let's you choose configuration and modules, e.g.: Want Prisma ORM or not? Want Authentication or not? ... Merino is ideal if you want fine-grained control", value: "merino" },
-      { title: "Cheviot", description: "A batteries-included stack where most decisions were made for you. Cheviot is ideal if you want to just get going with an opinionated stack that works", value: "cheviot" },
+      { title: "A-la-carte", description: "Start from minimal and adds what you need.", value: "alacarte" },
+      // { title: "Cheviot", description: "A batteries-included stack where most decisions were made for you. Cheviot is ideal if you want to just get going with an opinionated stack that works", value: "cheviot" },
     ],
     initial: 0
   },

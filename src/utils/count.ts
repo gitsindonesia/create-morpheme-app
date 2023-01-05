@@ -21,6 +21,6 @@ export const count = async (preferences: Preferences) => {
   return fetch("https://plausible.io/api/event", {
     method: "POST",
     headers,
-    body: `{"name":"cli","url":"https://cli.sidebase.io/?${annonymizedPreferences}","domain":"cli.sidebase.io"}`
+    body: `{"name":"cli","url":"https://gits.id?${annonymizedPreferences}","domain":"gitsindonesia.github.io/ui-component"}`
   }).then(() => { alreadyCounted = true }).catch(() => { return })
 }

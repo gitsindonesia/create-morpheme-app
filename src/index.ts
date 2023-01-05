@@ -7,7 +7,6 @@ import { getUserPkgManager } from "./utils/getUserPkgManager"
 import { cliOptions } from "./utils/parseCliOptions"
 import { count } from "./utils/count"
 
-
 const main = async () => {
   const { quick, ci } = cliOptions
   if (!quick) {
@@ -19,12 +18,13 @@ const main = async () => {
   let preferences
   if (!ci) {
     preferences = await getUserPreferences()
+    // disable counting in CI
     count(preferences)
   } else {
     preferences = {
       setProjectName: "my-gits-app",
-      setStack: "merino",
-      addModules: [ "prisma", "auth", "trpc", "tailwind", "naiveui" ],
+      setStack: "alacarte",
+      addModules: [ "prisma", "auth", "trpc", "tailwind", "gits-ui" ],
       runGitInit: true,
       addCi: "github",
       runInstall: true
@@ -39,7 +39,7 @@ const main = async () => {
   const template = await wrapInSpinner(`Adding Nuxt 3 ${preferences.setStack}-template`, downloadTemplate, preferences)
 
   // 2. Add modules
-  if (preferences.setStack === "merino") {
+  if (preferences.setStack === "alacarte") {
     await wrapInSpinner("Adding Nuxt modules", addModules, preferences, template.dir)
   }
 

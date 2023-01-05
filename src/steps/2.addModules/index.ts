@@ -38,6 +38,10 @@ export default async (preferences: Preferences, templateDir: string) => {
 
   // 4. Write nuxt config
   let nuxtConfig = {
+    modules: [
+      "@nuxtjs/tailwindcss",
+      "@gits-id/ui-nuxt"
+    ],
     typescript: {
       shim: false
     }
@@ -51,7 +55,13 @@ export default defineNuxtConfig(${inspect(nuxtConfig, { compact: false })})
   await writeFile(resolver("nuxt.config.ts"), nuxtConfigFile)
 
   // 5. Write app.vue to ensure that sub-example-pages of different modules will work
-  const nuxtAppVue = `<template>
+  const nuxtAppVue = `<script setup lang="ts">
+useHead({
+  title: 'Nuxt + GITS UI Starter',
+});
+</script>
+
+<template>
   <div>
     <NuxtPage />
   </div>
@@ -62,8 +72,8 @@ export default defineNuxtConfig(${inspect(nuxtConfig, { compact: false })})
   // 6. Write index.vue with a nice welcome message as well as links to sub-pages
   const moduleIndexHtmlSnippets = selectedModules.map((module) => moduleConfigs[module].htmlForIndexVue).filter(html => typeof html !== "undefined")
   const nuxtPagesIndexVue = `<template>
-  <div>
-    <h1${selectedModules.includes("tailwind") ? " class=\"text-4xl\"" : ""}>Welcome to your sidebase app!</h1>${moduleIndexHtmlSnippets.length > 0 ? "\n" + moduleIndexHtmlSnippets.join("\n    ") : ""}
+  <div class="container mx-auto p-6">
+    <h1${selectedModules.includes("tailwind") ? " class=\"text-4xl\"" : ""}>Welcome to your gits app!</h1>${moduleIndexHtmlSnippets.length > 0 ? "\n" + moduleIndexHtmlSnippets.join("\n    ") : ""}
   </div>
 </template>
 `

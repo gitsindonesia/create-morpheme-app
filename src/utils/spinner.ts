@@ -7,7 +7,7 @@ export const wrapInSpinner = async <T extends (...a: any) => any>(text: string, 
     spinner.text = `${text} (still running)`
   }, 10000)
   const timeoutALongWhile = setTimeout(() => {
-    spinner.text = `${text} (still running... Tried counting 🐑🐑?)`
+    spinner.text = `${text} (still running... Tried counting 🐑?)`
   }, 30000)
 
   const result = await func(...args)
