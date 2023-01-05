@@ -10,7 +10,7 @@ const MINIMAL_TEMPLATE = "github:gitsindonesia/ui-component/starter/nuxt-minimal
 const KNOWN_TEMPLATES = {
   "minimal": MINIMAL_TEMPLATE,
   "full": "github:gitsindonesia/nuxt-starter",
-  "alacarte": MINIMAL_TEMPLATE,
+  "custom": MINIMAL_TEMPLATE,
   // "cheviot": "community/sidebase"
 }
 

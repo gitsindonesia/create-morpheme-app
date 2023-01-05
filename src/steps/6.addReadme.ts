@@ -15,7 +15,7 @@ const makeReadme = (preferences: Preferences) =>  {
       "- GITS UI"
     ]
   }
-  else if (setStack === "alacarte") {
+  else if (setStack === "custom") {
     selectedFeatures = addModules.map((module: keyof typeof moduleConfigs) => `- ${moduleConfigs[module].humanReadableName}`)
     if (addCi === "github") {
       selectedFeatures.push("- GitHub Actions based CI")

@@ -34,7 +34,7 @@ const main = async () => {
   } else {
     preferences = {
       setProjectName: "my-gits-app",
-      setStack: "alacarte",
+      setStack: "custom",
       addModules: ["prisma", "auth", "trpc", "pinia", "eslint", "commitlint"],
       runGitInit: true,
       addCi: "github",
@@ -54,7 +54,7 @@ const main = async () => {
   )
 
   // 2. Add modules
-  if (preferences.setStack === "alacarte") {
+  if (preferences.setStack === "custom") {
     await wrapInSpinner(
       "Adding Nuxt modules",
       addModules,
