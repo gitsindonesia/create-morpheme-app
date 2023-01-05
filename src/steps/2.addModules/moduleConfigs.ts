@@ -269,6 +269,33 @@ module.exports = {
 };
 `
 
+const piniaCounterStore = `import { defineStore } from 'pinia'
+
+export const useCounterStore = defineStore('counter', {
+  state: () => ({ count: 0 }),
+  getters: {
+    doubleCount: (state) => state.count * 2,
+  },
+  actions: {
+    increment() {
+      this.count++
+    },
+  },
+})`
+
+const piniaCounterPage = `<script setup lang="ts">
+const counter = useCounterStore()
+</script>
+
+<template>
+  <div class="container mx-auto p-6">
+    <p>Count: {{ counter.count }}</p>
+    <p>Double Count: {{ counter.doubleCount }}</p>
+    <VBtn @click="counter.increment">Increment</VBtn>
+  </div>
+</template>
+`
+
 export declare interface File {
   path: string;
   content: string;
@@ -285,7 +312,7 @@ declare interface ModuleConfig {
 }
 
 // TODO: Improve files approach: It will fail as soon as the content of a file depends on two dependencies at the same time!
-export type Modules = "prisma" | "auth" | "trpc"
+export type Modules = "prisma" | "auth" | "trpc" | "pinia"
 export const moduleConfigs: Record<Modules, ModuleConfig> = {
   "prisma": {
     humanReadableName: "Prisma ORM",
@@ -405,6 +432,39 @@ export const moduleConfigs: Record<Modules, ModuleConfig> = {
     ],
     tasksPostInstall: [],
     htmlForIndexVue: "<p>Checkout the tRPC demo page here: <nuxt-link to=\"/trpc\" class=\"underline text-blue\">Click me to test the tRPC setup!</nuxt-link></p>"
+  },
+  "pinia": {
+    humanReadableName: "Pinia",
+    description: "A store for Vue applications. See more: https://pinia.esm.dev/",
+    dependencies: [{
+      name: "pinia",
+      version: "^2.0.28",
+      isDev: false
+    }, {
+      name: "@pinia/nuxt",
+      version: "^0.4.6",
+      isDev: false
+    }, ],
+    nuxtConfig: {
+      modules: [
+        "@pinia/nuxt",
+      ],
+      imports: {
+        dirs: ["./stores"],
+      },
+    },
+    files: [
+      {
+        path: "stores/counter.ts",
+        content: piniaCounterStore
+      },
+      {
+        path: "pages/pinia.vue",
+        content: piniaCounterPage
+      },
+    ],
+    tasksPostInstall: [],
+    htmlForIndexVue: "<p>Checkout the Pinia demo page here: <nuxt-link to=\"/pinia\" class=\"underline text-blue-600\">Click me to test the pinia setup!</nuxt-link></p>"
   },
   // no need to tailwind since its already installed on minimal starter
   // "tailwind": {
