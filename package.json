@@ -1,6 +1,6 @@
 {
-  "name": "create-gitsapp",
-  "version": "0.3.0",
+  "name": "create-gits-app",
+  "version": "0.0.0",
   "description": "The productive way to build GITS applications.",
   "scripts": {
     "dev": "vite-node src/",
