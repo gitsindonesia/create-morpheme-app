@@ -218,9 +218,7 @@ const hello = await $client.hello.useQuery({ text: 'client' })
 </template>
 `
 
-const piniaCounterStore = `import { defineStore } from 'pinia'
-
-export const useCounterStore = defineStore('counter', {
+const piniaCounterStore = `export const useCounterStore = defineStore('counter', {
   state: () => ({ count: 0 }),
   getters: {
     doubleCount: (state) => state.count * 2,
@@ -434,7 +432,15 @@ export const moduleConfigs: Record<Modules, ModuleConfig> = {
     }, ],
     nuxtConfig: {
       modules: [
-        "@pinia/nuxt",
+        [
+          "@pinia/nuxt",
+          {
+            autoImports: [
+              // automatically imports `defineStore`
+              "defineStore", // import { defineStore } from 'pinia'
+            ],
+          },
+        ],
       ],
       imports: {
         dirs: ["./stores"],
