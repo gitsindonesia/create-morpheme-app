@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  Get started with the <a target="_blank" href="https://gits.id">GITS UI</a> by running <code>npm create gitsapp@latest</code>
+  Get started with the <a target="_blank" href="https://gitsindonesia.github.io/ui-component/">GITS UI</a> by running <code>npm create gitsapp@latest</code>
 </p>
 
 <p align="center">
