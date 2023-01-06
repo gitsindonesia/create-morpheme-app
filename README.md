@@ -3,11 +3,11 @@
 </h1>
 
 <p align="center">
-    Interactive CLI to kickstart a Nuxt + GITS UI app.
+    Interactive CLI to kickstart a Nuxt + GITS UI applications.
 </p>
 
 <p align="center">
-  Get started with the <a target="_blank" href="https://gitsindonesia.github.io/ui-component/">GITS UI</a> by running <code>npm create gitsapp@latest</code>
+  Get started with the <a target="_blank" href="https://gitsindonesia.github.io/ui-component/">GITS UI</a> by running <code>npx create-gits-app</code>
 </p>
 
 <p align="center">
