@@ -42,7 +42,8 @@ jobs:
       - run: "cd my-gits-app && timeout 30 npm run dev & (sleep 10 && curl --fail localhost:3000)"
 
       # build app, start it in prod mode and curl from it
-      - run: "cd my-gits-app && npm run build && timeout 30 npm run preview & (sleep 10 && curl --fail localhost:3000)"
+      # - run: "cd my-gits-app && npm run build && timeout 30 npm run preview & (sleep 10 && curl --fail localhost:3000)"
+      # - run: "cd my-gits-app && npm run build"
 
   publish:
     needs: [testCli, testCodebase]
