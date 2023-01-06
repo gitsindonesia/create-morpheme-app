@@ -268,6 +268,21 @@ const eslintConfig = `{
 
 const commitlintConfig = "module.exports = {extends: ['@commitlint/config-conventional']}"
 
+const i18nEnUs = `{
+  "welcome": "Welcome",
+}`
+
+const i18nIdId = `{
+  "welcome": "Selamat datang",
+}`
+
+const i18nPage = `<template>
+  <div class="container mx-auto p-6">
+    <h1>{{ $t('welcome') }}</h1>
+  </div>
+</template>
+`
+
 export declare interface File {
   path: string;
   content: string;
@@ -277,14 +292,14 @@ declare interface ModuleConfig {
   humanReadableName: string
   description: string
   dependencies: Dependency[]
-  nuxtConfig: NuxtConfig
+  nuxtConfig: any
   files: File[]
   tasksPostInstall: string[]
   htmlForIndexVue?: string
 }
 
 // TODO: Improve files approach: It will fail as soon as the content of a file depends on two dependencies at the same time!
-export type Modules = "prisma" | "auth" | "trpc" | "pinia" | "eslint" | "commitlint"
+export type Modules = "prisma" | "auth" | "trpc" | "pinia" | "eslint" | "commitlint" | "i18n"
 export const moduleConfigs: Record<Modules, ModuleConfig> = {
   "prisma": {
     humanReadableName: "Prisma ORM",
@@ -485,6 +500,53 @@ export const moduleConfigs: Record<Modules, ModuleConfig> = {
       },
     ],
     tasksPostInstall: [],
+  },
+  "i18n": {
+    humanReadableName: "i18n",
+    description: "Internationalization for Nuxt. See more: https://v8.i18n.nuxtjs.org/",
+    dependencies: [
+      {
+        name: "@nuxtjs/i18n",
+        version: "^8.0.0-beta.7",
+        isDev: true
+      },
+    ],
+    nuxtConfig: {
+      modules: [
+        "@nuxtjs/i18n",
+      ],
+      i18n: {
+        locales: [
+          {
+            code: "en",
+            file: "en-US.json"
+          },
+          {
+            code: "id",
+            file: "id-ID.json"
+          },
+        ],
+        lazy: true,
+        langDir: "lang",
+        defaultLocale: "en"
+      },
+    },
+    files: [
+      {
+        path: "lang/en-US.json",
+        content: i18nEnUs
+      },
+      {
+        path: "lang/id-ID.json",
+        content: i18nIdId
+      },
+      {
+        path: "pages/i18n.vue",
+        content: i18nPage
+      },
+    ],
+    tasksPostInstall: [],
+    htmlForIndexVue: "<p>Checkout the nuxt-i18n demo page here: <nuxt-link to=\"/i18n\" class=\"underline text-blue-600\">Click me to test nuxt-i18n setup!</nuxt-link></p>"
   },
   // no need to tailwind since its already installed on minimal starter
   // "tailwind": {

@@ -51,7 +51,7 @@ export default async (preferences: Preferences, templateDir: string) => {
     nuxtConfig = defu(nuxtConfig, nuxtConfigExtension)
   }
   const nuxtConfigFile = `// https://nuxt.com/docs/api/configuration/nuxt-config
-export default defineNuxtConfig(${inspect(nuxtConfig, { compact: false })})
+export default defineNuxtConfig(${inspect(nuxtConfig, { compact: false, depth: 5 })})
 `
   await writeFile(resolver("nuxt.config.ts"), nuxtConfigFile)
 

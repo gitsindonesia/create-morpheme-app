@@ -35,7 +35,7 @@ const main = async () => {
     preferences = {
       setProjectName: "my-gits-app",
       setStack: "custom",
-      addModules: ["prisma", "auth", "trpc", "pinia", "eslint", "commitlint"],
+      addModules: ["prisma", "auth", "trpc", "pinia", "eslint", "commitlint", "i18n"],
       runGitInit: true,
       addCi: "github",
       runInstall: true,
