@@ -1,4 +1,4 @@
-import { NuxtConfig } from "@nuxt/schema"
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Dependency } from "../../utils/addPackageDependency"
 
 /**
@@ -292,7 +292,7 @@ declare interface ModuleConfig {
   humanReadableName: string
   description: string
   dependencies: Dependency[]
-  nuxtConfig: any
+  nuxtConfig: Record<string, any>
   files: File[]
   tasksPostInstall: string[]
   htmlForIndexVue?: string
