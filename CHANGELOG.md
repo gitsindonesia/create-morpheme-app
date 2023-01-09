@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/gitsindonesia/ui-component/compare/v0.0.2...v0.0.3) (2023-01-09)
+
+
+### Bug Fixes
+
+* hide sidebase frame ([777891a](https://github.com/gitsindonesia/ui-component/commit/777891a96f7d8e3fc6ff38b2f3b1558bfebac204))
+
 ### [0.0.2](https://github.com/gitsindonesia/ui-component/compare/v0.0.1...v0.0.2) (2023-01-09)
 
 
