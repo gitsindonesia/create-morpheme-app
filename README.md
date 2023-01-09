@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-    Interactive CLI to kickstart a Nuxt + GITS UI applications.
+    Interactive CLI to kickstart a Nuxt + GITS UI application.
 </p>
 
 <p align="center">
