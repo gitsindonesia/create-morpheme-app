@@ -18,12 +18,11 @@ const PROMPT_QUESTIONS: PromptObject[] = [
   {
     type: "select",
     name: "setStack",
-    message: "What stack would you like to use for your new project? More information: https://sidebase.io/sidebase/welcome/stacks",
+    message: "What stack would you like to use for your new project?",
     choices: [
       { title: "Minimal", description: "A minimal Nuxt + GITS UI starter template", value: "minimal" },
       { title: "Full", description: "A full Nuxt + GITS UI starter template", value: "full" },
       { title: "Custom", description: "Start from minimal and adds what you need.", value: "custom" },
-      // { title: "Cheviot", description: "A batteries-included stack where most decisions were made for you. Cheviot is ideal if you want to just get going with an opinionated stack that works", value: "cheviot" },
     ],
     initial: 0
   },
