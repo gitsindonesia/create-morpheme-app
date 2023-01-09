@@ -43,7 +43,8 @@ const makeReadme = (preferences: Preferences) =>  {
 
   return `# ${setProjectName}-app
 
-This is a ${setStack}] app created by running \`${packageManager} create gitsapp@latest\`. This project uses the following technologies for a great developer and user-experience:
+This is a ${setStack} app created by running \`npx create-gits-app\`. This project uses the following technologies for a great developer and user-experience:
+
 - [TypeScript](https://www.typescriptlang.org/)
 - [Nuxt 3](https://nuxt.com)
 ${selectedFeatures.join("\n")}
