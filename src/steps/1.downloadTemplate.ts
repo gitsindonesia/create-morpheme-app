@@ -8,11 +8,12 @@ import { say } from "../messages"
 const GITHUB_GITS_UI = "github:gitsindonesia/ui-component"
 const STARTER = `${GITHUB_GITS_UI}/starter`
 const MINIMAL_TEMPLATE = `${STARTER}/nuxt-minimal`
+const VUE_TEMPLATE = `${STARTER}/vue`
 
 const KNOWN_TEMPLATES = {
   "minimal": MINIMAL_TEMPLATE,
   "full": "github:gitsindonesia/nuxt-starter",
-  "vue": `${GITHUB_GITS_UI}/examples/vue`,
+  "vue": VUE_TEMPLATE,
   "custom": MINIMAL_TEMPLATE,
 }
 
