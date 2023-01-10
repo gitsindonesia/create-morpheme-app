@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/gitsindonesia/ui-component/compare/v0.0.3...v0.0.4) (2023-01-10)
+
+
+### Features
+
+* add new `Vue` template ([6a77e3f](https://github.com/gitsindonesia/ui-component/commit/6a77e3f887c4a3b7e19dbf5c5bb307fc1bb3b0eb))
+
 ### [0.0.3](https://github.com/gitsindonesia/ui-component/compare/v0.0.2...v0.0.3) (2023-01-09)
 
 
