@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/gitsindonesia/ui-component/compare/v0.0.4...v0.0.5) (2023-01-10)
+
+
+### Bug Fixes
+
+* update vue template path ([8077f15](https://github.com/gitsindonesia/ui-component/commit/8077f1595f773474e2827f50496882f3dd2462bd))
+
 ### [0.0.4](https://github.com/gitsindonesia/ui-component/compare/v0.0.3...v0.0.4) (2023-01-10)
 
 
