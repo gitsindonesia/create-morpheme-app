@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.0](https://github.com/gitsindonesia/ui-component/compare/v0.0.5...v0.1.0) (2023-01-18)
+
+
+### Features
+
+* add Nuxt Admin template ([e323316](https://github.com/gitsindonesia/ui-component/commit/e323316ec03e5b6b0a575404900161a8335ce820))
+
 ### [0.0.5](https://github.com/gitsindonesia/ui-component/compare/v0.0.4...v0.0.5) (2023-01-10)
 
 
