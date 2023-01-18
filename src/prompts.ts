@@ -6,7 +6,7 @@ import { getUserPkgManager } from "./utils/getUserPkgManager"
 const skipIfCheviotWasChosen =
   (typeIfNotMerino: PromptType) =>
     (_: unknown, preferences: Record<string, string>) =>
-      ["minimal", "full", "vue"].includes(preferences.setStack)
+      ["minimal", "full", "vue", "admin"].includes(preferences.setStack)
         ? null
         : typeIfNotMerino
 
@@ -52,6 +52,11 @@ const PROMPT_QUESTIONS: PromptObject[] = [
         title: "Nuxt Starter",
         description: "A full batteries included Nuxt + GITS UI starter template",
         value: "full",
+      },
+      {
+        title: "Nuxt Admin",
+        description: "Extensible admin template with Nuxt + GITS UI",
+        value: "admin",
       },
       {
         title: "Vue",

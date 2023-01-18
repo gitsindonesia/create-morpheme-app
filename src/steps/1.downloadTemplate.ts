@@ -9,11 +9,13 @@ const GITHUB_GITS_UI = "github:gitsindonesia/ui-component"
 const STARTER = `${GITHUB_GITS_UI}/starter`
 const MINIMAL_TEMPLATE = `${STARTER}/nuxt-minimal`
 const VUE_TEMPLATE = `${STARTER}/vue`
+const ADMIN_TEMPLATE = `${STARTER}/nuxt-admin`
 
 const KNOWN_TEMPLATES = {
   "minimal": MINIMAL_TEMPLATE,
   "full": "github:gitsindonesia/nuxt-starter",
   "vue": VUE_TEMPLATE,
+  "admin": ADMIN_TEMPLATE,
   "custom": MINIMAL_TEMPLATE,
 }
 
