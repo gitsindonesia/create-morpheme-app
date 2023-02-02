@@ -264,7 +264,8 @@ const eslintConfig = `{
   }
 }`
 
-const commitlintConfig = "module.exports = {extends: ['@commitlint/config-conventional']}"
+const commitlintConfig =
+  "module.exports = {extends: ['@commitlint/config-conventional']}"
 
 const i18nEnUs = `{
   "welcome": "Welcome",
@@ -287,149 +288,180 @@ export declare interface File {
 }
 
 declare interface ModuleConfig {
-  humanReadableName: string
-  description: string
-  dependencies: Dependency[]
-  nuxtConfig: Record<string, any>
-  files: File[]
-  tasksPostInstall: string[]
-  htmlForIndexVue?: string
+  humanReadableName: string;
+  description: string;
+  dependencies: Dependency[];
+  nuxtConfig: Record<string, any>;
+  files: File[];
+  tasksPostInstall: string[];
+  htmlForIndexVue?: string;
 }
 
 // TODO: Improve files approach: It will fail as soon as the content of a file depends on two dependencies at the same time!
-export type Modules = "prisma" | "auth" | "trpc" | "pinia" | "eslint" | "commitlint" | "i18n"
+export type Modules =
+  | "prisma"
+  | "auth"
+  | "trpc"
+  | "pinia"
+  | "eslint"
+  | "commitlint"
+  | "i18n"
+  | "gits-auth"
+  | "gits-admin";
+
 export const moduleConfigs: Record<Modules, ModuleConfig> = {
-  "prisma": {
+  prisma: {
     humanReadableName: "Prisma ORM",
-    description: "Next-generation Node.js and TypeScript ORM. See more: https://www.prisma.io/",
+    description:
+      "Next-generation Node.js and TypeScript ORM. See more: https://www.prisma.io/",
     dependencies: [
       {
         name: "prisma",
         version: "^4.8.0",
-        isDev: true
+        isDev: true,
       },
       {
         name: "@prisma/client",
         version: "^4.8.0",
-        isDev: false
+        isDev: false,
       },
       {
         name: "@sidebase/nuxt-prisma",
         version: "^0.1.2",
-        isDev: false
-      }
+        isDev: false,
+      },
     ],
     nuxtConfig: {
       extends: ["@sidebase/nuxt-prisma"],
     },
-    files: [{
-      path: ".env",
-      content: prismaEnvFile
-    }, {
-      path: "prisma/schema.prisma",
-      content: prismaFile
-    }],
+    files: [
+      {
+        path: ".env",
+        content: prismaEnvFile,
+      },
+      {
+        path: "prisma/schema.prisma",
+        content: prismaFile,
+      },
+    ],
     tasksPostInstall: [
       "- [ ] Prisma: Edit your `prisma/prisma.schema` to your liking",
-      "- [ ] Prisma: Run `npx prisma db push` to sync the schema to your database after changing it"
-    ]
+      "- [ ] Prisma: Run `npx prisma db push` to sync the schema to your database after changing it",
+    ],
   },
-  "auth": {
+  auth: {
     humanReadableName: "nuxt-auth",
-    description: "Authentication via OAuth, Credentials and magic email flows. Wraps the popular NextAuth.js with 12k stars. See more: https://sidebase.io/nuxt-auth",
+    description:
+      "Authentication via OAuth, Credentials and magic email flows. Wraps the popular NextAuth.js with 12k stars. See more: https://sidebase.io/nuxt-auth",
     dependencies: [
       {
         name: "@sidebase/nuxt-auth",
         version: "^0.3.2",
-        isDev: true
+        isDev: true,
       },
     ],
     nuxtConfig: {
-      modules: ["@sidebase/nuxt-auth"]
+      modules: ["@sidebase/nuxt-auth"],
     },
-    files: [{
-      path: "server/api/auth/[...].ts",
-      content: nuxtAuthServerFile
-    }, {
-      path: "pages/protected.vue",
-      content: nuxtAuthExamplePage
-    }],
+    files: [
+      {
+        path: "server/api/auth/[...].ts",
+        content: nuxtAuthServerFile,
+      },
+      {
+        path: "pages/protected.vue",
+        content: nuxtAuthExamplePage,
+      },
+    ],
     tasksPostInstall: [
       "- [ ] Auth: Configure your auth providers to the [NuxtAuthHandler](./server/api/auth/[...].ts)",
-      "- [ ] Auth, optional: Enable global protection by setting `enableGlobalAppMiddleware: true` in [your nuxt.config.ts](./nuxt.config.ts). Delete the logal middleware in the [protected.vue](./pages/protected.vue) page if you do"
+      "- [ ] Auth, optional: Enable global protection by setting `enableGlobalAppMiddleware: true` in [your nuxt.config.ts](./nuxt.config.ts). Delete the logal middleware in the [protected.vue](./pages/protected.vue) page if you do",
     ],
-    htmlForIndexVue: "<p>Checkout the page protected by `nuxt-auth` here: <nuxt-link to=\"/protected\" class=\"underline text-blue\">Click me to test the auth setup!</nuxt-link></p>"
+    htmlForIndexVue:
+      "<p>Checkout the page protected by `nuxt-auth` here: <nuxt-link to=\"/protected\" class=\"underline text-blue\">Click me to test the auth setup!</nuxt-link></p>",
   },
-  "trpc": {
+  trpc: {
     humanReadableName: "tRPC 10",
-    description: "Build end-to-end typesafe APIs in Nuxt applications. See more: https://trpc.io/",
-    dependencies: [{
-      name: "@trpc/server",
-      version: "^10.5.0",
-      isDev: false
-    }, {
-      name: "@trpc/client",
-      version: "^10.5.0",
-      isDev: false
-    }, {
-      name: "trpc-nuxt",
-      version: "^0.4.4",
-      isDev: false
-    }, {
-      name: "zod",
-      version: "^3.20.2",
-      isDev: false
-    }, {
-      name: "superjson",
-      version: "^1.12.1",
-      isDev: false
-    }],
+    description:
+      "Build end-to-end typesafe APIs in Nuxt applications. See more: https://trpc.io/",
+    dependencies: [
+      {
+        name: "@trpc/server",
+        version: "^10.5.0",
+        isDev: false,
+      },
+      {
+        name: "@trpc/client",
+        version: "^10.5.0",
+        isDev: false,
+      },
+      {
+        name: "trpc-nuxt",
+        version: "^0.4.4",
+        isDev: false,
+      },
+      {
+        name: "zod",
+        version: "^3.20.2",
+        isDev: false,
+      },
+      {
+        name: "superjson",
+        version: "^1.12.1",
+        isDev: false,
+      },
+    ],
     nuxtConfig: {
       build: {
-        transpile: ["trpc-nuxt"]
-      }
+        transpile: ["trpc-nuxt"],
+      },
     },
     files: [
       {
         path: "server/trpc/trpc.ts",
-        content: nuxtTrpcRootConfig
+        content: nuxtTrpcRootConfig,
       },
       {
         path: "server/trpc/routers/index.ts",
-        content: nuxtTrpcRoutersIndex
+        content: nuxtTrpcRoutersIndex,
       },
       {
         path: "server/trpc/context.ts",
-        content: nuxtTrpcContext
+        content: nuxtTrpcContext,
       },
       {
         path: "server/api/trpc/[trpc].ts",
-        content: nuxtTrpcApiHandler
+        content: nuxtTrpcApiHandler,
       },
       {
         path: "plugins/trpcClient.ts",
-        content: nuxtTrpcPlugin
+        content: nuxtTrpcPlugin,
       },
       {
         path: "pages/trpc.vue",
-        content: nuxtTrpcExamplePage
+        content: nuxtTrpcExamplePage,
       },
     ],
     tasksPostInstall: [],
-    htmlForIndexVue: "<p>Checkout the tRPC demo page here: <nuxt-link to=\"/trpc\" class=\"underline text-blue\">Click me to test the tRPC setup!</nuxt-link></p>"
+    htmlForIndexVue:
+      "<p>Checkout the tRPC demo page here: <nuxt-link to=\"/trpc\" class=\"underline text-blue\">Click me to test the tRPC setup!</nuxt-link></p>",
   },
-  "pinia": {
+  pinia: {
     humanReadableName: "Pinia",
-    description: "A store for Vue applications. See more: https://pinia.esm.dev/",
-    dependencies: [{
-      name: "pinia",
-      version: "^2.0.28",
-      isDev: false
-    }, {
-      name: "@pinia/nuxt",
-      version: "^0.4.6",
-      isDev: false
-    }, ],
+    description:
+      "A store for Vue applications. See more: https://pinia.esm.dev/",
+    dependencies: [
+      {
+        name: "pinia",
+        version: "^2.0.28",
+        isDev: false,
+      },
+      {
+        name: "@pinia/nuxt",
+        version: "^0.4.6",
+        isDev: false,
+      },
+    ],
     nuxtConfig: {
       modules: [
         [
@@ -449,110 +481,145 @@ export const moduleConfigs: Record<Modules, ModuleConfig> = {
     files: [
       {
         path: "stores/counter.ts",
-        content: piniaCounterStore
+        content: piniaCounterStore,
       },
       {
         path: "pages/pinia.vue",
-        content: piniaCounterPage
+        content: piniaCounterPage,
       },
     ],
     tasksPostInstall: [],
-    htmlForIndexVue: "<p>Checkout the Pinia demo page here: <nuxt-link to=\"/pinia\" class=\"underline text-blue-600\">Click me to test the pinia setup!</nuxt-link></p>"
+    htmlForIndexVue:
+      "<p>Checkout the Pinia demo page here: <nuxt-link to=\"/pinia\" class=\"underline text-blue-600\">Click me to test the pinia setup!</nuxt-link></p>",
   },
-  "eslint": {
+  eslint: {
     humanReadableName: "ESLint",
     description: "Lint your code with ESLint. See more: https://eslint.org/",
-    dependencies: [{
-      name: "@antfu/eslint-config",
-      version: "^0.34.0",
-      isDev: true
-    },],
-    nuxtConfig: {
-    },
+    dependencies: [
+      {
+        name: "@antfu/eslint-config",
+        version: "^0.34.0",
+        isDev: true,
+      },
+    ],
+    nuxtConfig: {},
     files: [
       {
         path: ".eslintrc",
-        content: eslintConfig
+        content: eslintConfig,
       },
     ],
     tasksPostInstall: [],
   },
-  "commitlint": {
+  commitlint: {
     humanReadableName: "Commitlint",
-    description: "Lint your commit messages with Commitlint. See more: https://commitlint.js.org/#/",
+    description:
+      "Lint your commit messages with Commitlint. See more: https://commitlint.js.org/#/",
     dependencies: [
       {
         name: "@commitlint/config-conventional",
         version: "^17.4.0",
-        isDev: true
+        isDev: true,
       },
       {
         name: "@commitlint/cli",
         version: "^17.4.0",
-        isDev: true
+        isDev: true,
       },
       {
         name: "husky",
         version: "^8.0.3",
-        isDev: true
-      }
+        isDev: true,
+      },
     ],
-    nuxtConfig: {
-    },
+    nuxtConfig: {},
     files: [
       {
         path: "commitlint.config.js",
-        content: commitlintConfig
+        content: commitlintConfig,
       },
     ],
     tasksPostInstall: [],
   },
-  "i18n": {
+  i18n: {
     humanReadableName: "i18n",
-    description: "Internationalization for Nuxt. See more: https://v8.i18n.nuxtjs.org/",
+    description:
+      "Internationalization for Nuxt. See more: https://v8.i18n.nuxtjs.org/",
     dependencies: [
       {
         name: "@nuxtjs/i18n",
         version: "^8.0.0-beta.7",
-        isDev: true
+        isDev: true,
       },
     ],
     nuxtConfig: {
-      modules: [
-        "@nuxtjs/i18n",
-      ],
+      modules: ["@nuxtjs/i18n"],
       i18n: {
         locales: [
           {
             code: "en",
-            file: "en-US.json"
+            file: "en-US.json",
           },
           {
             code: "id",
-            file: "id-ID.json"
+            file: "id-ID.json",
           },
         ],
         lazy: true,
         langDir: "lang",
-        defaultLocale: "en"
+        defaultLocale: "en",
       },
     },
     files: [
       {
         path: "lang/en-US.json",
-        content: i18nEnUs
+        content: i18nEnUs,
       },
       {
         path: "lang/id-ID.json",
-        content: i18nIdId
+        content: i18nIdId,
       },
       {
         path: "pages/i18n.vue",
-        content: i18nPage
+        content: i18nPage,
       },
     ],
     tasksPostInstall: [],
-    htmlForIndexVue: "<p>Checkout the nuxt-i18n demo page here: <nuxt-link to=\"/i18n\" class=\"underline text-blue-600\">Click me to test nuxt-i18n setup!</nuxt-link></p>"
+    htmlForIndexVue:
+      "<p>Checkout the nuxt-i18n demo page here: <nuxt-link to=\"/i18n\" class=\"underline text-blue-600\">Click me to test nuxt-i18n setup!</nuxt-link></p>",
+  },
+  "gits-auth": {
+    humanReadableName: "GITS Auth",
+    description:
+      "An extensible authentication template powered by Nuxt.js and GITS UI.",
+    dependencies: [
+      {
+        name: "@gits-id/nuxt-auth",
+        version: "^0.1.0",
+        isDev: false,
+      },
+    ],
+    nuxtConfig: {
+      extends: ["@gits-id/nuxt-auth"],
+    },
+    files: [],
+    tasksPostInstall: [],
+  },
+  "gits-admin": {
+    humanReadableName: "GITS Admin",
+    description: "An extensible admin template powered by Nuxt.js and GITS UI.",
+    dependencies: [
+      {
+        name: "@gits-id/nuxt-admin",
+        version: "^0.1.0",
+        isDev: false,
+      },
+    ],
+    nuxtConfig: {
+      extends: ["@gits-id/nuxt-admin"],
+    },
+    files: [],
+    tasksPostInstall: [],
   },
   // no need to tailwind since its already installed on minimal starter
   // "tailwind": {
@@ -587,21 +654,6 @@ export const moduleConfigs: Record<Modules, ModuleConfig> = {
   //       content: tailwindConfig
   //     },
   //   ],
-  //   tasksPostInstall: []
-  // }
-  // no need to naiveui since its already had GITS UI on minimal starter
-  // "naiveui": {
-  //   humanReadableName: "Naive UI",
-  //   description: "A Vue 3 Component Library. Fairly Complete, Theme Customizable, Uses TypeScript, Fast. Kinda Interesting. See more: https://www.naiveui.com/",
-  //   dependencies: [{
-  //     name: "@huntersofbook/naive-ui-nuxt",
-  //     version: "^0.5.1",
-  //     isDev: true
-  //   }],
-  //   nuxtConfig: {
-  //     modules: ["@huntersofbook/naive-ui-nuxt"],
-  //   },
-  //   files: [],
   //   tasksPostInstall: []
   // }
 }
