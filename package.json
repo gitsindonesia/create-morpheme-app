@@ -21,7 +21,7 @@
     "url": "git+https://github.com/gitsindonesia/ui-component"
   },
   "bin": {
-    "create-gitsapp": "./dist/index.js"
+    "create-gits-app": "./dist/index.js"
   },
   "keywords": [
     "gits-ui",
