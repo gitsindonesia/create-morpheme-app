@@ -10,12 +10,14 @@ const STARTER = `${GITHUB_GITS_UI}/starter`
 const MINIMAL_TEMPLATE = `${STARTER}/nuxt-minimal`
 const VUE_TEMPLATE = `${STARTER}/vue`
 const ADMIN_TEMPLATE = `${STARTER}/nuxt-admin`
+const AUTH_TEMPLATE = `${STARTER}/nuxt-auth`
 
 const KNOWN_TEMPLATES = {
   "minimal": MINIMAL_TEMPLATE,
   "full": "github:gitsindonesia/nuxt-starter",
   "vue": VUE_TEMPLATE,
   "admin": ADMIN_TEMPLATE,
+  "auth": AUTH_TEMPLATE,
   "custom": MINIMAL_TEMPLATE,
 }
 
