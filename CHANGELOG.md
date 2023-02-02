@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/gitsindonesia/ui-component/compare/v0.1.0...v0.2.0) (2023-02-02)
+
+
+### Features
+
+* add new modules: gits-auth and gits-admin ([d281336](https://github.com/gitsindonesia/ui-component/commit/d2813361fbaf42e2771b7822b67b149fadb7ea70))
+* add new template `Nuxt Auth` ([5889d30](https://github.com/gitsindonesia/ui-component/commit/5889d30e6c494f246bb7007d972bcba53130269d))
+
 ## [0.1.0](https://github.com/gitsindonesia/ui-component/compare/v0.0.5...v0.1.0) (2023-01-18)
 
 
