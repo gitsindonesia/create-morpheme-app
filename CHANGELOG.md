@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/gitsindonesia/ui-component/compare/v0.2.1...v0.4.0) (2023-03-16)
+
+
+### Features
+
+* rebanding to morpheme ([399739f](https://github.com/gitsindonesia/ui-component/commit/399739f3edb923c8f71c55f11b9e3a85dd0050ea))
+
+
+### Bug Fixes
+
+* improve default readme template ([cefb6ff](https://github.com/gitsindonesia/ui-component/commit/cefb6ff48446aee11660d8ebd18724826202bda1))
+* improve generated readme ([575dc1d](https://github.com/gitsindonesia/ui-component/commit/575dc1ddb0e3b2463a740908ccfad534cdf4cdff))
+
 ### [0.2.1](https://github.com/gitsindonesia/ui-component/compare/v0.2.0...v0.2.1) (2023-02-02)
 
 
