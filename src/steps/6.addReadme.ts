@@ -5,14 +5,14 @@ import { getUserPkgManager } from "../utils/getUserPkgManager"
 import { moduleConfigs, Modules } from "./2.addModules/moduleConfigs"
 
 const makeReadme = (preferences: Preferences) =>  {
-  const { setProjectName = "gits-ui", setStack = undefined, addModules = [], addCi = "none" } = preferences
+  const { setProjectName = "morpheme-ui", setStack = undefined, addModules = [], addCi = "none" } = preferences
 
   let selectedFeatures = []
   if (setStack === "minimal") {
     selectedFeatures = [
-      "- Nuxt 3",
-      "- Tailwind CSS",
-      "- GITS UI"
+      "- [Nuxt 3](https://nuxt.com)",
+      "- [Tailwind CSS](https://tailwindcss.com/)",
+      "- [Morpheme UI](https://gitsindonesia.github.io/ui-component/)"
     ]
   }
   else if (setStack === "custom") {
@@ -41,12 +41,11 @@ const makeReadme = (preferences: Preferences) =>  {
   const tasksPostInstall = addModules.map((module: Modules) => moduleConfigs[module].tasksPostInstall).flat()
   const packageManager = getUserPkgManager()
 
-  return `# ${setProjectName}-app
+  return `# ${setProjectName}
 
-This is a ${setStack} app created by running \`npx create-gits-app\`. This project uses the following technologies for a great developer and user-experience:
+This is a ${setStack} app created by running \`npx create-morpheme-app\`. This project uses the following technologies for a great developer and user-experience:
 
 - [TypeScript](https://www.typescriptlang.org/)
-- [Nuxt 3](https://nuxt.com)
 ${selectedFeatures.join("\n")}
 
 ## How to get going?
