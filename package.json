@@ -1,7 +1,7 @@
 {
   "name": "create-morpheme-app",
   "version": "0.3.0",
-  "description": "Interactive CLI to kickstart a Vue/Nuxt + Morpheme UI.",
+  "description": "Interactive CLI to kickstart a Vue/Nuxt with Morpheme UI",
   "scripts": {
     "dev": "vite-node src/",
     "start": "npx",

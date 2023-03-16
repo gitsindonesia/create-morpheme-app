@@ -1,13 +1,13 @@
 <h1 align="center">
-    create-gits-app
+    create-morpheme-app
 </h1>
 
 <p align="center">
-    Interactive CLI to kickstart a Nuxt + GITS UI application.
+    Interactive CLI to kickstart a Vue/Nuxt with Morpheme UI.
 </p>
 
 <p align="center">
-  Get started with the <a target="_blank" href="https://gitsindonesia.github.io/ui-component/">GITS UI</a> by running <code>npx create-gits-app</code>
+  Get started with the <a target="_blank" href="https://gitsindonesia.github.io/ui-component/">Morpheme UI</a> by running <code>npx create-morpheme-app</code>
 </p>
 
 <p align="center">
@@ -19,9 +19,9 @@
 
 </p>
 
-## create-gits-app
+## create-morpheme-app
 
-The productive way to build GITS applications.
+The productive way to build Vue/Nuxt applications with Morpheme UI.
 
 <!-- Badges -->
 [npm-version-src]: https://img.shields.io/npm/v/@gits-id/ui/latest.svg
