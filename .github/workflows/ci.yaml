@@ -39,11 +39,11 @@ jobs:
       - run: cd morpheme-app && npx prisma generate
 
       # start app and curl from it
-      - run: "cd morpheme-app && timeout 30 npm run dev & (sleep 10 && curl --fail localhost:3000)"
+      # - run: "cd morpheme-app && timeout 30 npm run dev & (sleep 10 && curl --fail localhost:3000)"
 
       # build app, start it in prod mode and curl from it
       # - run: "cd morpheme-app && npm run build && timeout 30 npm run preview & (sleep 10 && curl --fail localhost:3000)"
-      # - run: "cd morpheme-app && npm run build"
+      - run: "cd morpheme-app && npm run build"
 
   publish:
     needs: [testCli, testCodebase]
