@@ -7,35 +7,37 @@ import { moduleConfigs, Modules } from "./2.addModules/moduleConfigs"
 const makeReadme = (preferences: Preferences) =>  {
   const { setProjectName = "morpheme-ui", setStack = undefined, addModules = [], addCi = "none" } = preferences
 
-  let selectedFeatures = []
+  const defaultFeatures = [
+    "- [Nuxt 3](https://nuxt.com)",
+    "- [Tailwind CSS](https://tailwindcss.com/)",
+    "- [Morpheme UI](https://gitsindonesia.github.io/ui-component/)"
+  ]
+  let selectedFeatures: string[] = []
   if (setStack === "minimal") {
-    selectedFeatures = [
-      "- [Nuxt 3](https://nuxt.com)",
-      "- [Tailwind CSS](https://tailwindcss.com/)",
-      "- [Morpheme UI](https://gitsindonesia.github.io/ui-component/)"
-    ]
+    selectedFeatures = defaultFeatures
   }
   else if (setStack === "custom") {
-    selectedFeatures = addModules.map((module: keyof typeof moduleConfigs) => `- ${moduleConfigs[module].humanReadableName}`)
+    selectedFeatures = [...defaultFeatures, ...addModules.map((module: keyof typeof moduleConfigs) => `- ${moduleConfigs[module].humanReadableName}`)]
     if (addCi === "github") {
       selectedFeatures.push("- GitHub Actions based CI")
     }
   } else {
-    selectedFeatures = [
-      // "- Database models, migrations, queries and easy DB-switching via Prisma",
-      // "- Deep Prisma integration: Use the client in your endpoints via nuxt-prisma, Prisma client is auto-generated for npm run dev and other commands and more",
-      // "- Frontend- and Backend data-transformation via nuxt-parse and zod",
-      // "- In-memory development SQL-database via sqlite3",
-      // "- Linting via eslint",
-      // "- Test management, Test UI, component snapshotting via vitest",
-      // "- Component tests via test-library/vue",
-      // "- Nuxt 3 native API testing via @nuxt/test-utils",
-      // "- Code coverage via c8",
-      // "- CSS utilities via TailwindCSS",
-      // "- CSS components via Naive UI",
-      // "- Type checking in script and template via Volar / vue-tsc",
-      // "- Code editor configuration via .editorconfig files and a portable .settings/ folder whith best-practice VS Code settings and extensions for Vue 3 / Nuxt 3 development",
-    ]
+    selectedFeatures = defaultFeatures
+    // selectedFeatures = [
+    // "- Database models, migrations, queries and easy DB-switching via Prisma",
+    // "- Deep Prisma integration: Use the client in your endpoints via nuxt-prisma, Prisma client is auto-generated for npm run dev and other commands and more",
+    // "- Frontend- and Backend data-transformation via nuxt-parse and zod",
+    // "- In-memory development SQL-database via sqlite3",
+    // "- Linting via eslint",
+    // "- Test management, Test UI, component snapshotting via vitest",
+    // "- Component tests via test-library/vue",
+    // "- Nuxt 3 native API testing via @nuxt/test-utils",
+    // "- Code coverage via c8",
+    // "- CSS utilities via TailwindCSS",
+    // "- CSS components via Naive UI",
+    // "- Type checking in script and template via Volar / vue-tsc",
+    // "- Code editor configuration via .editorconfig files and a portable .settings/ folder whith best-practice VS Code settings and extensions for Vue 3 / Nuxt 3 development",
+    // ]
   }
 
   const tasksPostInstall = addModules.map((module: Modules) => moduleConfigs[module].tasksPostInstall).flat()
@@ -45,7 +47,6 @@ const makeReadme = (preferences: Preferences) =>  {
 
 This is a ${setStack} app created by running \`npx create-morpheme-app\`. This project uses the following technologies for a great developer and user-experience:
 
-- [TypeScript](https://www.typescriptlang.org/)
 ${selectedFeatures.join("\n")}
 
 ## How to get going?
