@@ -1,7 +1,7 @@
 {
-  "name": "create-gits-app",
-  "version": "0.2.1",
-  "description": "The productive way to build GITS applications.",
+  "name": "create-morpheme-app",
+  "version": "0.3.0",
+  "description": "Interactive CLI to kickstart a Vue/Nuxt + Morpheme UI.",
   "scripts": {
     "dev": "vite-node src/",
     "start": "npx",
@@ -21,12 +21,14 @@
     "url": "git+https://github.com/gitsindonesia/ui-component"
   },
   "bin": {
-    "create-gits-app": "./dist/index.js"
+    "create-morpheme-app": "./dist/index.js"
   },
   "keywords": [
-    "gits-ui",
-    "create-gitsapp",
+    "morpheme-ui",
+    "create-morpheme-app",
+    "vue",
     "nuxt",
+    "tailwind",
     "typescript",
     "prisma",
     "fullstack",

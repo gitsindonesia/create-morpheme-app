@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Dependency } from "../../utils/addPackageDependency"
+import { Dependency } from "../../utils/addPackageDependency";
 
 /**
  * PRISMA FILE CONTENTS, from: `npx prisma init`
@@ -23,11 +23,11 @@ model Example {
   id          String @id @default(uuid())
   details     String
 }
-`
+`;
 
 const prismaEnvFile = `# Prisma
 DATABASE_URL=file:./db.sqlite
-`
+`;
 
 /**
  * NUXT AUTH FILE CONTENTS, from: sidebase.io/nuxt-auth/
@@ -80,7 +80,7 @@ export default NuxtAuthHandler({
     })
   ]
 })
-`
+`;
 
 const nuxtAuthExamplePage = `<script setup lang="ts">
 definePageMeta({ middleware: 'auth' })
@@ -92,7 +92,7 @@ const { data, signOut } = useSession()
   <div>I'm protected! Session data: {{ data }}</div>
   <button @click="signOut()" class="rounded-xl shadow-xl p-2 m-2">sign out</button>
 </template>
-`
+`;
 
 /**
  * NUXT tRPC FILE CONTENTS, from: https://trpc-nuxt.vercel.app/get-started/usage/simple
@@ -120,7 +120,7 @@ const t = initTRPC.context<Context>().create({
 export const publicProcedure = t.procedure;
 export const router = t.router;
 export const middleware = t.middleware;
-`
+`;
 
 const nuxtTrpcRoutersIndex = `import { z } from 'zod'
 import { publicProcedure, router } from '../trpc'
@@ -142,7 +142,7 @@ export const appRouter = router({
 
 // export type definition of API
 export type AppRouter = typeof appRouter
-`
+`;
 
 const nuxtTrpcContext = `import { inferAsyncReturnType } from '@trpc/server'
 import type { H3Event } from 'h3'
@@ -165,7 +165,7 @@ export async function createContext(event: H3Event) {
 }
 
 export type Context = inferAsyncReturnType<typeof createContext>;
-`
+`;
 
 const nuxtTrpcApiHandler = `import { createNuxtApiHandler } from 'trpc-nuxt'
 import { appRouter } from '~/server/trpc/routers'
@@ -176,7 +176,7 @@ export default createNuxtApiHandler({
   router: appRouter,
   createContext,
 })
-`
+`;
 
 const nuxtTrpcPlugin = `import { createTRPCNuxtClient, httpBatchLink } from "trpc-nuxt/client"
 import type { AppRouter } from "~/server/trpc/routers"
@@ -202,7 +202,7 @@ export default defineNuxtPlugin(() => {
     },
   }
 })
-`
+`;
 
 const nuxtTrpcExamplePage = `<script setup lang="ts">
 const { $client } = useNuxtApp()
@@ -216,7 +216,7 @@ const hello = await $client.hello.useQuery({ text: 'client' })
     <p>tRPC Data: "{{ hello.data.value?.greeting }}" send at "{{ hello.data.value?.time.toLocaleDateString() }}".</p>
   </div>
 </template>
-`
+`;
 
 const piniaCounterStore = `export const useCounterStore = defineStore('counter', {
   state: () => ({ count: 0 }),
@@ -228,7 +228,7 @@ const piniaCounterStore = `export const useCounterStore = defineStore('counter',
       this.count++
     },
   },
-})`
+})`;
 
 const piniaCounterPage = `<script setup lang="ts">
 const counter = useCounterStore()
@@ -241,7 +241,7 @@ const counter = useCounterStore()
     <VBtn @click="counter.increment">Increment</VBtn>
   </div>
 </template>
-`
+`;
 
 const eslintConfig = `{
   "extends": "@antfu",
@@ -262,25 +262,25 @@ const eslintConfig = `{
       "multiline": "below"
     }]
   }
-}`
+}`;
 
 const commitlintConfig =
-  "module.exports = {extends: ['@commitlint/config-conventional']}"
+  "module.exports = {extends: ['@commitlint/config-conventional']}";
 
 const i18nEnUs = `{
   "welcome": "Welcome",
-}`
+}`;
 
 const i18nIdId = `{
   "welcome": "Selamat datang",
-}`
+}`;
 
 const i18nPage = `<template>
   <div class="container mx-auto p-6">
     <h1>{{ $t('welcome') }}</h1>
   </div>
 </template>
-`
+`;
 
 export declare interface File {
   path: string;
@@ -306,8 +306,8 @@ export type Modules =
   | "eslint"
   | "commitlint"
   | "i18n"
-  | "gits-auth"
-  | "gits-admin";
+  | "morpheme-auth"
+  | "morpheme-admin";
 
 export const moduleConfigs: Record<Modules, ModuleConfig> = {
   prisma: {
@@ -378,7 +378,7 @@ export const moduleConfigs: Record<Modules, ModuleConfig> = {
       "- [ ] Auth, optional: Enable global protection by setting `enableGlobalAppMiddleware: true` in [your nuxt.config.ts](./nuxt.config.ts). Delete the logal middleware in the [protected.vue](./pages/protected.vue) page if you do",
     ],
     htmlForIndexVue:
-      "<p>Checkout the page protected by `nuxt-auth` here: <nuxt-link to=\"/protected\" class=\"underline text-blue\">Click me to test the auth setup!</nuxt-link></p>",
+      '<p>Checkout the page protected by `nuxt-auth` here: <nuxt-link to="/protected" class="underline text-blue">Click me to test the auth setup!</nuxt-link></p>',
   },
   trpc: {
     humanReadableName: "tRPC 10",
@@ -444,7 +444,7 @@ export const moduleConfigs: Record<Modules, ModuleConfig> = {
     ],
     tasksPostInstall: [],
     htmlForIndexVue:
-      "<p>Checkout the tRPC demo page here: <nuxt-link to=\"/trpc\" class=\"underline text-blue\">Click me to test the tRPC setup!</nuxt-link></p>",
+      '<p>Checkout the tRPC demo page here: <nuxt-link to="/trpc" class="underline text-blue">Click me to test the tRPC setup!</nuxt-link></p>',
   },
   pinia: {
     humanReadableName: "Pinia",
@@ -490,7 +490,7 @@ export const moduleConfigs: Record<Modules, ModuleConfig> = {
     ],
     tasksPostInstall: [],
     htmlForIndexVue:
-      "<p>Checkout the Pinia demo page here: <nuxt-link to=\"/pinia\" class=\"underline text-blue-600\">Click me to test the pinia setup!</nuxt-link></p>",
+      '<p>Checkout the Pinia demo page here: <nuxt-link to="/pinia" class="underline text-blue-600">Click me to test the pinia setup!</nuxt-link></p>',
   },
   eslint: {
     humanReadableName: "ESLint",
@@ -586,37 +586,38 @@ export const moduleConfigs: Record<Modules, ModuleConfig> = {
     ],
     tasksPostInstall: [],
     htmlForIndexVue:
-      "<p>Checkout the nuxt-i18n demo page here: <nuxt-link to=\"/i18n\" class=\"underline text-blue-600\">Click me to test nuxt-i18n setup!</nuxt-link></p>",
+      '<p>Checkout the nuxt-i18n demo page here: <nuxt-link to="/i18n" class="underline text-blue-600">Click me to test nuxt-i18n setup!</nuxt-link></p>',
   },
-  "gits-auth": {
-    humanReadableName: "GITS Auth",
+  "morpheme-auth": {
+    humanReadableName: "Morpheme Auth",
     description:
-      "An extensible authentication template powered by Nuxt.js and GITS UI.",
+      "An extensible authentication template powered by Nuxt.js and Morpheme UI.",
     dependencies: [
       {
-        name: "@gits-id/nuxt-auth",
+        name: "@morpheme/nuxt-auth",
         version: "^0.1.0",
         isDev: false,
       },
     ],
     nuxtConfig: {
-      extends: ["@gits-id/nuxt-auth"],
+      extends: ["@morpheme/nuxt-auth"],
     },
     files: [],
     tasksPostInstall: [],
   },
-  "gits-admin": {
-    humanReadableName: "GITS Admin",
-    description: "An extensible admin template powered by Nuxt.js and GITS UI.",
+  "morpheme-admin": {
+    humanReadableName: "Morpheme Admin",
+    description:
+      "An extensible admin template powered by Nuxt.js and Morpheme UI.",
     dependencies: [
       {
-        name: "@gits-id/nuxt-admin",
+        name: "@morpheme/nuxt-admin",
         version: "^0.1.0",
         isDev: false,
       },
     ],
     nuxtConfig: {
-      extends: ["@gits-id/nuxt-admin"],
+      extends: ["@morpheme/nuxt-admin"],
     },
     files: [],
     tasksPostInstall: [],
@@ -636,24 +637,4 @@ export const moduleConfigs: Record<Modules, ModuleConfig> = {
   //   files: [],
   //   tasksPostInstall: []
   // },
-  // no need to naiveui since its already had GITS UI on minimal starter
-  // "gits-ui": {
-  //   humanReadableName: "GITS UI",
-  //   description: "GITS UI Component",
-  //   dependencies: [{
-  //     name: "@gits-id/ui-nuxt",
-  //     version: "^0.14.0-alpha.4",
-  //     isDev: false
-  //   }],
-  //   nuxtConfig: {
-  //     modules: ["@gits-id/ui-nuxt"],
-  //   },
-  //   files: [
-  //     {
-  //       path: "tailwind.config.js",
-  //       content: tailwindConfig
-  //     },
-  //   ],
-  //   tasksPostInstall: []
-  // }
-}
+};
