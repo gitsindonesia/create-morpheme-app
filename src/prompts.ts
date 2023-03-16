@@ -1,14 +1,14 @@
-import prompts, { PromptType, type PromptObject } from "prompts";
-import { say } from "./messages";
-import { moduleConfigs } from "./steps/2.addModules/moduleConfigs";
-import { getUserPkgManager } from "./utils/getUserPkgManager";
+import prompts, { PromptType, type PromptObject } from "prompts"
+import { say } from "./messages"
+import { moduleConfigs } from "./steps/2.addModules/moduleConfigs"
+import { getUserPkgManager } from "./utils/getUserPkgManager"
 
 const skipIfCheviotWasChosen =
   (typeIfNotMerino: PromptType) =>
-  (_: unknown, preferences: Record<string, string>) =>
-    ["minimal", "full", "vue", "admin", "auth"].includes(preferences.setStack)
-      ? null
-      : typeIfNotMerino;
+    (_: unknown, preferences: Record<string, string>) =>
+      ["minimal", "full", "vue", "admin", "auth"].includes(preferences.setStack)
+        ? null
+        : typeIfNotMerino
 
 const PROJECT_NAME_NOUNS = [
   "app",
@@ -26,10 +26,10 @@ const PROJECT_NAME_NOUNS = [
   "adventure",
   "thing",
   "opportunity",
-];
+]
 
 const getRandomProjectNoun = () =>
-  PROJECT_NAME_NOUNS[Math.floor(Math.random() * PROJECT_NAME_NOUNS.length)];
+  PROJECT_NAME_NOUNS[Math.floor(Math.random() * PROJECT_NAME_NOUNS.length)]
 
 const PROMPT_QUESTIONS: PromptObject[] = [
   {
@@ -117,17 +117,17 @@ const PROMPT_QUESTIONS: PromptObject[] = [
     type: "confirm",
     name: "runInstall",
     message: () => {
-      const packageManager = getUserPkgManager();
-      return `Would you like to run \`${packageManager} install\` after finishing up?`;
+      const packageManager = getUserPkgManager()
+      return `Would you like to run \`${packageManager} install\` after finishing up?`
     },
     initial: true,
   },
-];
+]
 
 const onCancel = () => {
-  say("Aborting mission - have a pleasent day 👋");
-  process.exit();
-};
+  say("Aborting mission - have a pleasent day 👋")
+  process.exit()
+}
 
-export const getUserPreferences = () => prompts(PROMPT_QUESTIONS, { onCancel });
+export const getUserPreferences = () => prompts(PROMPT_QUESTIONS, { onCancel })
 export type Preferences = Awaited<ReturnType<typeof getUserPreferences>>;
