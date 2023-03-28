@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.2](https://github.com/gitsindonesia/ui-component/compare/v0.4.0...v0.4.2) (2023-03-28)
+
+
+### Features
+
+* skip readme update for `minimal` and `full` template ([b5b6c34](https://github.com/gitsindonesia/ui-component/commit/b5b6c34bcf5a06f7e56df8e352be90d1dc882314))
+
+
+### Bug Fixes
+
+* skip readme only for `full` template ([0879a61](https://github.com/gitsindonesia/ui-component/commit/0879a615ce2b32a613ced8d637d157cbb6860983))
+
 ## [0.4.0](https://github.com/gitsindonesia/ui-component/compare/v0.2.1...v0.4.0) (2023-03-16)
 
 
