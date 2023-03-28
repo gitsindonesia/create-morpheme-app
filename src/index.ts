@@ -91,7 +91,11 @@ const main = async () => {
   }
 
   // 6. Write readme
-  await wrapInSpinner("Adding README", addReadme, preferences, template.dir)
+  if (!["minimal", "full"].includes(preferences.setStack)) {
+    await wrapInSpinner("Adding README", addReadme, preferences, template.dir)
+  } else {
+    console.log("Skipping README creation...")
+  }
 
   sayGoodbye(preferences)
 }
