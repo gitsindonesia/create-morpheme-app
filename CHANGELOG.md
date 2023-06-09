@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/gitsindonesia/ui-component/compare/v0.4.2...v0.5.0) (2023-06-09)
+
+
+### Features
+
+* add new two templates: Nuxt Commerce and Kitchen Sink ([c55c654](https://github.com/gitsindonesia/ui-component/commit/c55c65431de45a8091abb927aed4c8250fbc1904))
+
 ### [0.4.2](https://github.com/gitsindonesia/ui-component/compare/v0.4.0...v0.4.2) (2023-03-28)
 
 
