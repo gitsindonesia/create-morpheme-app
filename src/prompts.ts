@@ -6,7 +6,15 @@ import { getUserPkgManager } from "./utils/getUserPkgManager"
 const skipIfCheviotWasChosen =
   (typeIfNotMerino: PromptType) =>
     (_: unknown, preferences: Record<string, string>) =>
-      ["minimal", "full", "vue", "admin", "auth"].includes(preferences.setStack)
+      [
+        "minimal",
+        "full",
+        "vue",
+        "admin",
+        "auth",
+        "commerce",
+        "kitchen-sink",
+      ].includes(preferences.setStack)
         ? null
         : typeIfNotMerino
 
@@ -63,6 +71,16 @@ const PROMPT_QUESTIONS: PromptObject[] = [
         title: "Nuxt Auth",
         description: "Extensible auth template with Nuxt + Morpheme UI",
         value: "auth",
+      },
+      {
+        title: "Nuxt Commerce",
+        description: "Extensible E-Commerce app built with Nuxt + Morpheme UI",
+        value: "commerce",
+      },
+      {
+        title: "Kitchen Sink",
+        description: "Morpheme UI Kitchen Sink App",
+        value: "kitchen-sink",
       },
       {
         title: "Vue",

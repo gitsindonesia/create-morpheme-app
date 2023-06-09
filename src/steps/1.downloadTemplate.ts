@@ -11,6 +11,8 @@ const MINIMAL_TEMPLATE = `${STARTER}/nuxt-minimal`
 const VUE_TEMPLATE = `${STARTER}/vue`
 const ADMIN_TEMPLATE = `${STARTER}/nuxt-admin`
 const AUTH_TEMPLATE = `${STARTER}/nuxt-auth`
+const KITCHEN_SINK_TEMPLATE = `${STARTER}/kitchen-sink`
+const COMMERCE_TEMPLATE = `${STARTER}/nuxt-commerce`
 
 const KNOWN_TEMPLATES = {
   "minimal": MINIMAL_TEMPLATE,
@@ -18,6 +20,8 @@ const KNOWN_TEMPLATES = {
   "vue": VUE_TEMPLATE,
   "admin": ADMIN_TEMPLATE,
   "auth": AUTH_TEMPLATE,
+  "commerce": COMMERCE_TEMPLATE,
+  "kitchen-sink": KITCHEN_SINK_TEMPLATE,
   "custom": MINIMAL_TEMPLATE,
 }
 
