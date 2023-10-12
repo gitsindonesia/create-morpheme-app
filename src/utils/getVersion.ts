@@ -9,7 +9,7 @@ export const getVersion = async () => {
 
   let response: { version: string }
   try {
-    response = await fetch("https://registry.npmjs.org/create-gits-app/latest").then(response => response.json() as unknown as { version: string } )
+    response = await fetch("https://registry.npmjs.org/create-morpheme-app/latest").then(response => response.json() as unknown as { version: string } )
   } catch (error) {
     response = { version: "0.0.0" }
   }
