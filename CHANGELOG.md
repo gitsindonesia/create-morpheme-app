@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.1](https://github.com/gitsindonesia/ui-component/compare/v0.5.0...v0.5.1) (2023-10-12)
+
+
+### Features
+
+* add new Astro template ([3fd4303](https://github.com/gitsindonesia/ui-component/commit/3fd4303d16ab80b706ede3f35ca556aa5a2a2ad5))
+
+
+### Bug Fixes
+
+* fix wrong package name ([ee92da8](https://github.com/gitsindonesia/ui-component/commit/ee92da812987a1662c3ddd55f7293e97b8db8b95))
+
 ## [0.5.0](https://github.com/gitsindonesia/ui-component/compare/v0.4.2...v0.5.0) (2023-06-09)
 
 
