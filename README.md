@@ -24,14 +24,14 @@
 The productive way to build Vue/Nuxt applications with Morpheme UI.
 
 <!-- Badges -->
-[npm-version-src]: https://img.shields.io/npm/v/@gits-id/ui/latest.svg
-[npm-version-href]: https://npmjs.com/package/@gits-id/ui
+[npm-version-src]: https://img.shields.io/npm/v/@morpheme/ui/latest.svg
+[npm-version-href]: https://npmjs.com/package/@morpheme/ui
 
-[npm-downloads-src]: https://img.shields.io/npm/dt/@gits-id/ui.svg
-[npm-downloads-href]: https://npmjs.com/package/@gits-id/ui
+[npm-downloads-src]: https://img.shields.io/npm/dt/@morpheme/ui.svg
+[npm-downloads-href]: https://npmjs.com/package/@morpheme/ui
 
-[license-src]: https://img.shields.io/npm/l/@gits-id/ui.svg
-[license-href]: https://npmjs.com/package/@gits-id/ui
+[license-src]: https://img.shields.io/npm/l/@morpheme/ui.svg
+[license-href]: https://npmjs.com/package/@morpheme/ui
 
 ## Credit
 
