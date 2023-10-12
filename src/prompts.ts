@@ -14,6 +14,7 @@ const skipIfCheviotWasChosen =
         "auth",
         "commerce",
         "kitchen-sink",
+        "astro",
       ].includes(preferences.setStack)
         ? null
         : typeIfNotMerino
@@ -34,6 +35,7 @@ const PROJECT_NAME_NOUNS = [
   "adventure",
   "thing",
   "opportunity",
+  "astro",
 ]
 
 const getRandomProjectNoun = () =>
@@ -86,6 +88,11 @@ const PROMPT_QUESTIONS: PromptObject[] = [
         title: "Vue",
         description: "A minimal Vue + Morpheme UI starter template",
         value: "vue",
+      },
+      {
+        title: "Astro",
+        description: "A minimal Astro + Morpheme UI starter template",
+        value: "astro",
       },
       {
         title: "Custom",
